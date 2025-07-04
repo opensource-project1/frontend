@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>집중 타이머</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-image: url('main_page2.png'); /* 배경 이미지 */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    .screen-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 23%;
+  left: 20%;
+  width: 53%;
+  height: 50%;
+  background-color: rgba(248, 248, 240, 0.88);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-family: 'Pretendard', sans-serif;
+}
+
+
+.todo-box {
+  width: 45%;
+  background-color: #fff8d5;
+  border-radius: 20px;
+  padding: 20px;
+  height: 90%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.timer-box {
+  width: 45%;
+  text-align: center;
+}
+
+#timer {
+  font-size: 48px;
+  margin: 20px 0;
+}
+
+input#todo-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+  </style>
+</head>
+<body>
+  <div class="screen-box">
+  <!-- 🟡 왼쪽: 할 일 목록 박스 -->
+  <div class="todo-box">
+    <h3>할 일 목록</h3>
+    <ul id="todo-list">
+      <li>공부하기</li>
+      <li>물 마시기</li>
+    </ul>
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
+    <button onclick="addTodo()">추가</button>
+  </div>
+
+  <!-- 🔵 오른쪽: 타이머 -->
+  <div class="timer-box">
+    <h2>집중 타이머</h2>
+    <div id="timer">25:00</div>
+    <button onclick="startTimer()">Start</button>
+  </div>
+  </div>
+
+  <script>
+    // 타이머 기능
+    let duration = 25 * 60;
+    let timer;
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        const minutes = String(Math.floor(duration / 60)).padStart(2, '0');
+        const seconds = String(duration % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+        if (--duration < 0) {
+          clearInterval(timer);
+          alert("집중 시간이 끝났어요!");
+        }
+      }, 1000);
+    }
+
+    // to-do 기능
+    const input = document.getElementById('todoInput');
+    const list = document.getElementById('todoList');
+
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && input.value.trim() !== '') {
+        const li = document.createElement('li');
+        li.textContent = input.value;
+        list.appendChild(li);
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

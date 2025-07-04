@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>메인 페이지</title>
+  <style>
+    .tabs {
+  display: flex;
+  margin-bottom: 7px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  cursor: pointer;
+  background: #eee;
+  font-weight: bold;
+  margin-right: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.tab.active {
+  background: #fff;
+  border-bottom: 2px solid white;
+}
+
+
+.tab-content.active {
+  display: block;
+}
+.tabs span {
+  padding: 10px 20px;
+  border: 1px solid #888;
+  border-bottom: none;
+  background-color: #f8f8f0;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+}
+
+.tabs span.active {
+  background-color: white;
+  font-weight: bold;
+}
+    /* ... 기존 html, body, body, screen-box는 그대로 두고 아래 추가 또는 수정 ... */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background-image: url('main_page2.png'); /* ✅ 정확한 이미지 경로! */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .screen-box {
+  position: absolute;
+  top: 23%;         /* ← 모니터 위치 맞춰야 돼! */
+  left: 20%;
+  width: 53%;
+  height: 50%;
+  background-color: rgba(248, 248, 240, 0.88);
+  border-radius: 10px;
+  padding: 10px 30px 80px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-family: 'Pretendard', sans-serif;    }
+
+    .screen-box h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #444;
+    display: inline-block;
+    }
+
+    .time-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    }
+
+    input[type="time"] {
+    flex: 1;
+    }
+
+    /* 요일 */
+    .days {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    }
+
+    .days label {
+    background: #eee;
+    color: #777;
+    transition: 0.2s;
+    }
+
+    .days input[type="checkbox"]:checked + label {
+    background: #1f234d;
+    color: white;
+    }
+
+    /* START 버튼 */
+    button {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    width: auto;
+    padding: 12px 28px;
+    background: #1f234d;
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    transition: 0.3s;
+    }
+
+    button:hover {
+    background: #29356a;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-box">
+  <!-- ✅ 이 안에 탭 UI 넣기 -->
+  <div class="tabs">
+    <div class="tab active" data-tab="tab1">Instagram</div>
+    <div class="tab" data-tab="tab2">YouTube</div>
+    <div class="tab" data-tab="tab3">+ Add</div>
+  </div>
+    <!-- 제목 줄 -->
+    <h2>Website Block Settings</h2>
+  <div class="tab-content active" id="tab1">
+
+    <!-- URL 입력창 줄 -->
+    <div class="url-input">
+        <label for="blockUrl">차단할 웹사이트 URL : </label>
+        <input type="text" id="blockUrl" placeholder="예: www.instagram.com" />
+    </div>
+
+    <!-- ⏬ 기존 설정 UI들 -->
+  </div>
+
+
+    <h2>Blocking Time</h2>
+    <div class="time-group">
+      <label>Start</label>
+      <input type="time" />
+      <label>End</label>
+      <input type="time" />
+    </div>
+
+    <h2>Blocking Days</h2>
+    <div class="days">
+      <input type="checkbox" id="sun" hidden><label for="sun">SUN</label>
+      <input type="checkbox" id="mon" hidden><label for="mon">MON</label>
+      <input type="checkbox" id="tue" hidden><label for="tue">TUE</label>
+      <input type="checkbox" id="wed" hidden><label for="wed">WED</label>
+      <input type="checkbox" id="thu" hidden><label for="thu">THU</label>
+      <input type="checkbox" id="fri" hidden><label for="fri">FRI</label>
+      <input type="checkbox" id="sat" hidden><label for="sat">SAT</label>
+    </div>
+
+    <button>START</button>
+    <button onclick="location.href='timer.html'">START</button>
+
+  </div>
+
+</body>
+</html>
