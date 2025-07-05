@@ -106,7 +106,7 @@ function showPopup1() {
 
   // ⏱ GIF 한 번 재생 시간 이후 페이지 이동 (예: 5초)
   setTimeout(() => {
-    window.location.href = 'main.html';
+    window.location.href = 'login.html';
   }, 445);  // 필요에 따라 시간 조절 가능
 }
 
