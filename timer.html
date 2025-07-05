@@ -2,13 +2,60 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>집중 타이머</title>
+  <title>Start study!</title>
   <style>
+    
+    .tabs {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;   /* 상대 위치로 이동 가능하게 함 */
+    top: 164px;             /* 위에서 10px 떨어진 위치에 놓기 */
+    left: 300px;            /* 왼쪽에서 30px 떨어지게 */
+    z-index: 10;           /* 다른 요소 위에 보이게 함 */
+  }
+
+  .tab {
+    padding: 5px 22px;
+    font-size: 13px;
+    border: 1.5px solid #000000;
+    border-bottom: none;
+    border-radius: 9px 9px 0 0;
+    background-color: #ffdaef;
+    color: #000000;  /* ✅ 글자색 흰색으로 변경 */
+    cursor: pointer;
+    margin-right: 6px;
+    transition: 0.3s; /* 마우스 올렸을 때 부드럽게 바뀌도록 애니메이션 0.3초 */
+  }
+
+  .tab.active {
+    background-color: white;
+    border-bottom: 2px solid white;
+  }
+
+
+  .tab-content.active {
+      margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tabs span {
+    padding: 10px 20px;
+    border: 1px solid #888;
+    border-bottom: none;
+    background-color: #f8f8f0;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+  }
+
+  .tabs span.active {
+    background-color: white;
+    font-weight: bold;
+  }
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-image: url('main_page2.png'); /* 배경 이미지 */
+      background-image: url('main_page2.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -16,100 +63,275 @@
     }
 
     .screen-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  top: 23%;
-  left: 20%;
-  width: 53%;
-  height: 50%;
-  background-color: rgba(248, 248, 240, 0.88);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  font-family: 'Pretendard', sans-serif;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 25.3%;
+      left: 20%;
+      width: 53%;
+      height: 53%;
+      background: linear-gradient(to bottom, #ffffff, #f2f4ff );
+      background-color:  #f4f9ff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3),
+      inset 0 0 15px rgba(255, 255, 255, 0.4);  /* ✅ 내부 광택 */
 
-
-.todo-box {
-  width: 45%;
-  background-color: #fff8d5;
-  border-radius: 20px;
-  padding: 20px;
-  height: 90%;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.timer-box {
-  width: 45%;
-  text-align: center;
-}
-
-#timer {
-  font-size: 48px;
-  margin: 20px 0;
-}
-
-input#todo-input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-  </style>
-</head>
-<body>
-  <div class="screen-box">
-  <!-- 🟡 왼쪽: 할 일 목록 박스 -->
-  <div class="todo-box">
-    <h3>할 일 목록</h3>
-    <ul id="todo-list">
-      <li>공부하기</li>
-      <li>물 마시기</li>
-    </ul>
-    <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
-    <button onclick="addTodo()">추가</button>
-  </div>
-
-  <!-- 🔵 오른쪽: 타이머 -->
-  <div class="timer-box">
-    <h2>집중 타이머</h2>
-    <div id="timer">25:00</div>
-    <button onclick="startTimer()">Start</button>
-  </div>
-  </div>
-
-  <script>
-    // 타이머 기능
-    let duration = 25 * 60;
-    let timer;
-    function startTimer() {
-      clearInterval(timer);
-      timer = setInterval(() => {
-        const minutes = String(Math.floor(duration / 60)).padStart(2, '0');
-        const seconds = String(duration % 60).padStart(2, '0');
-        document.getElementById('timer').textContent = `${minutes}:${seconds}`;
-        if (--duration < 0) {
-          clearInterval(timer);
-          alert("집중 시간이 끝났어요!");
-        }
-      }, 1000);
     }
 
-    // to-do 기능
-    const input = document.getElementById('todoInput');
-    const list = document.getElementById('todoList');
+    .todo-box {
+      width: 35%;
+      background-color: #e6c7ef;
+      border-radius: 20px;
+      padding: 20px;
+      height: 80%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
 
-    input.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' && input.value.trim() !== '') {
+    .timer-box {
+      width: 45%;
+      text-align: center;
+    }
+
+    #timer {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    input#todo-input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .circle-timer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+#progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  stroke-dasharray: 565.48; /* 2πr ≈ 2 * 3.14 * 90 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  font-size: 32px;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 10;
+}
+
+.ring-bar {
+  fill: none;
+  stroke: #ffa0fa; /* 진한 남색 */
+  stroke-width: 10;
+  stroke-dasharray: 565.48; /* 2πr (r=90) */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s;
+}
+
+.start-btn {
+  margin-top: 20px;
+  padding: 14px 32px;
+  background-color: #6c63ff;  /* 연보라색 */
+  color: white;
+  border: none;
+  border-radius: 999px; /* 둥글게 알약처럼 */
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Pretendard', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.start-btn:hover {
+  background-color: #574fd6;
+  transform: scale(1.03);
+}
+
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px; /* 얇은 막대 느낌 */
+  background: linear-gradient(to bottom, #a59bff, #a59bff); /* 그라데이션 */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.window-dots {
+  position: absolute;
+  right: 14px;        /* 오른쪽 끝에서 살짝 떨어짐 */
+  top: 8px;           /* 위에서 약간 아래 */
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots span {
+  width: 7px;
+  height: 7px;
+  background-color: white;  /* 원 색상 */
+  border-radius: 50%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); /* 작게 테두리 */
+}
+
+
+  </style>
+</head>
+
+<body>
+    <!-- 위의 바 -->
+      <div class="tabs">
+        <div class="tab" onclick="location.href='mypage.html'">MYPAGE</div>
+        <div class="tab" onclick="location.href='main.html'">START</div>
+        <div class="tab" onclick="location.href='record.html'">RECORD</div>
+    </div>
+  <div class="screen-box">
+
+     <div class="top-bar"> <!-- ✅ 이 줄이 꾸며주는 박스! -->
+      <div class="window-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- 왼쪽 -->
+    <div class="todo-box">
+      <h3>할 일 목록</h3>
+      <ul id="todo-list"></ul>
+      <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
+      <button id="add-btn">추가</button>
+    </div>
+
+    <!-- 오른쪽 -->
+<div class="timer-box">
+  <h2>Start work!</h2>
+  <div class="circle-timer">
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="90" stroke="#ddd" stroke-width="15" fill="none" />
+      <circle id="progress-ring" cx="100" cy="100" r="90" stroke="#3b3f73" stroke-width="15" fill="none" stroke-linecap="round" />
+    </svg>
+    <div class="timer-text" id="timer">25:00</div>
+  </div>
+  <button class="start-btn" onclick="startTimer()">Start</button>
+
+</div>
+
+<script>
+  // 📝 할 일 목록 기능
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+    const addBtn = document.getElementById('add-btn');
+
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    savedTodos.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+
+    addBtn.addEventListener('click', () => {
+      if (input.value.trim() !== '') {
         const li = document.createElement('li');
         li.textContent = input.value;
         list.appendChild(li);
+
+        savedTodos.push(input.value);
+        localStorage.setItem("todos", JSON.stringify(savedTodos));
         input.value = '';
       }
     });
-  </script>
+
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') addBtn.click();
+    });
+  });
+
+  // 🕒 타이머 값 가져오기
+  let minutes = parseInt(localStorage.getItem('focusMinutes'));
+  if (!minutes || isNaN(minutes)) {
+    minutes = 25;
+  }
+  let seconds = minutes * 60;
+  let timerInterval;
+
+  // 🟣 원형 타이머 관련 설정
+  const progressRing = document.getElementById('progress-ring');
+  const circleLength = 2 * Math.PI * 90; // r=90 이니까
+
+  progressRing.style.strokeDasharray = circleLength;
+  progressRing.style.strokeDashoffset = 0;
+
+  function updateCircle(progress) {
+    const offset = circleLength * (1 - progress);
+    progressRing.style.strokeDashoffset = offset;
+  }
+
+  // ⏱ 시간 표시 업데이트
+  function updateTimerDisplay() {
+    const display = document.getElementById('timer');
+    const min = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const sec = String(seconds % 60).padStart(2, '0');
+    display.textContent = `${min}:${sec}`;
+  }
+
+  // ▶ 타이머 시작 함수
+  function startTimer() {
+    clearInterval(timerInterval);
+    updateCircle(0); // 원형 초기화
+    updateTimerDisplay(); // 숫자도 갱신
+
+    timerInterval = setInterval(() => {
+      if (seconds > 0) {
+        seconds--;
+        updateTimerDisplay();
+
+        const progress = (minutes * 60 - seconds) / (minutes * 60);
+        updateCircle(progress);
+      } else {
+        clearInterval(timerInterval);
+        updateCircle(1);
+        alert("집중 시간이 끝났어요!");
+      }
+    }, 1000);
+  }
+
+  // 🔘 시작 버튼 이벤트 연결
+  document.addEventListener('DOMContentLoaded', () => {
+    updateTimerDisplay();
+    const startBtn = document.querySelector('button[onclick="startTimer()"]');
+    if (startBtn) {
+      startBtn.addEventListener('click', startTimer);
+    }
+  });
+</script>
+
+
+
+
 </body>
 </html>
+

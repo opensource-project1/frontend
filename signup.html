@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <style>
+    body {
+      font-family: '맑은 고딕', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px 30px;
+      width: 400px;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #8d9bff;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #7b8bee;
+    }
+
+    .login-link {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .login-link a {
+      text-decoration: none;
+      color: #7b8bee;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>회원가입</h2>
+    <form action="login.html" method="POST">
+      <label for="email">e-mail</label>
+      <input type="email" id="email" placeholder="example@gmail.com" required />
+
+      <label for="pw">PW</label>
+      <input type="password" id="pw" placeholder="비밀번호 입력" required />
+
+      <label for="pwCheck">PW 확인</label>
+      <input type="password" id="pwCheck" placeholder="비밀번호 다시 입력" required />
+
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="이름 또는 닉네임" required />
+
+      <button type="submit">회원가입</button>
+    </form>
+
+    <div class="login-link">
+      <a href="login.html">이미 계정이 있으신가요? 로그인</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- todo.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>할 일 입력</title>
+</head>
+<body>
+  <h2>할 일 입력</h2>
+  <input type="text" id="todoInput" placeholder="할 일 입력" />
+  <button onclick="addTodo()">추가</button>
+  <ul id="todoList"></ul>
+  <button onclick="saveTodos()">저장하고 타이머로 이동</button>
+
+  <script>
+    const input = document.getElementById("todoInput");
+    const list = document.getElementById("todoList");
+
+    function addTodo() {
+      if (!input.value.trim()) return;
+      const li = document.createElement("li");
+      li.textContent = input.value;
+      list.appendChild(li);
+      input.value = "";
+    }
+
+    function saveTodos() {
+      const todos = [];
+      document.querySelectorAll("#todoList li").forEach(li => {
+        todos.push(li.textContent);
+      });
+      localStorage.setItem("todos", JSON.stringify(todos));  // 저장
+      window.location.href = "timer.html";  // 이동
+    }
+  </script>
+</body>
+</html>
