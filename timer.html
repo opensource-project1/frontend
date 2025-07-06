@@ -342,6 +342,8 @@ background: linear-gradient(to bottom, #ff82d3, #d79bff);
 
 
 <script>
+  let savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  
   function createTodoItem(text) {
   const li = document.createElement('li');
   li.textContent = text;
