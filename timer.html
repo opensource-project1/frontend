@@ -342,6 +342,33 @@ background: linear-gradient(to bottom, #ff82d3, #d79bff);
 
 
 <script>
+  function createTodoItem(text) {
+  const li = document.createElement('li');
+  li.textContent = text;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '❌';
+  deleteBtn.style.marginLeft = '10px';
+  deleteBtn.style.cursor = 'pointer';
+  deleteBtn.style.border = 'none';
+  deleteBtn.style.background = 'none';
+  deleteBtn.style.color = '#ff5bdb';
+
+  deleteBtn.onclick = () => {
+    li.remove();
+
+    // 로컬스토리지에서도 제거
+    const index = savedTodos.indexOf(text);
+    if (index > -1) {
+      savedTodos.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(savedTodos));
+    }
+  };
+
+  li.appendChild(deleteBtn);
+  return li;
+}
+
   // 📝 할 일 목록 기능
   document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('todo-input');
@@ -350,16 +377,14 @@ background: linear-gradient(to bottom, #ff82d3, #d79bff);
 
     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     savedTodos.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
+      const li = createTodoItem(item);
       list.appendChild(li);
     });
 
     addBtn.addEventListener('click', () => {
       if (input.value.trim() !== '') {
-        const li = document.createElement('li');
-        li.textContent = input.value;
-        list.appendChild(li);
+    const li = createTodoItem(input.value);
+    list.appendChild(li);
 
         savedTodos.push(input.value);
         localStorage.setItem("todos", JSON.stringify(savedTodos));
