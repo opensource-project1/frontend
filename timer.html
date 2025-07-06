@@ -320,9 +320,9 @@ background: linear-gradient(to bottom, #ff82d3, #d79bff);
       <div class="pill-heading">Check List</div>
       <ul id="todo-list"></ul>
           <div class="input-row">
-      <input type="text" id="blockUrl" placeholder="할 일을 입력하세요" />
+      <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
     </div>
-      <button class="start-btn2">추가</button>
+      <button id="add-btn" class="start-btn2">추가</button>
     </div>
 
     <!-- 오른쪽 -->
@@ -384,7 +384,7 @@ background: linear-gradient(to bottom, #ff82d3, #d79bff);
     addBtn.addEventListener('click', () => {
       if (input.value.trim() !== '') {
     const li = createTodoItem(input.value);
-    list.appendChild(li);
+        list.appendChild(li);
 
         savedTodos.push(input.value);
         localStorage.setItem("todos", JSON.stringify(savedTodos));
