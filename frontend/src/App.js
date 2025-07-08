@@ -1,11 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './App.css';
-import MainPage from './main';
-import LoginPage from './login';
-import MyPage from './mypage';
-import TimerPage from './timer';
-import RecordPage from './record';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import "./App.css";
+import MainPage from "./main";
+import LoginPage from "./pages/login";
+import MyPage from "./mypage";
+import TimerPage from "./timer";
+import RecordPage from "./pages/record";
 
 function App() {
   return (
