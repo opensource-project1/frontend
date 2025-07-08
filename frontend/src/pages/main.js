@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import CenterModal from './CenterModal';
-import './main.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CenterModal from "../CenterModal";
+import "../assets/styles/main.css";
 
 function MainPage() {
-  const [focusMinutes, setFocusMinutes] = useState('');
+  const [focusMinutes, setFocusMinutes] = useState("");
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ function MainPage() {
       alert("유효한 시간을 입력해주세요!");
       return;
     }
-    localStorage.setItem('focusMinutes', focusMinutes);
-    navigate('/timer');
+    localStorage.setItem("focusMinutes", focusMinutes);
+    navigate("/timer");
   };
 
   const handleTabClick = (path) => {
@@ -34,27 +34,36 @@ function MainPage() {
     <div
       className="main-bg"
       style={{
-        minHeight: '100vh',
-        width: '100vw',
+        minHeight: "100vh",
+        width: "100vw",
         backgroundImage: `url('/main_page2.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        position: 'fixed',
-        top: 0, left: 0, right: 0, bottom: 0,
-        zIndex: 0
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 0,
       }}
     >
       <CenterModal>
         <div className="tabs">
-          <div className="tab" onClick={() => handleTabClick('/mypage')}>MYPAGE</div>
+          <div className="tab" onClick={() => handleTabClick("/mypage")}>
+            MYPAGE
+          </div>
           <div className="tab active">START</div>
-          <div className="tab" onClick={() => handleTabClick('/record')}>RECORD</div>
+          <div className="tab" onClick={() => handleTabClick("/record")}>
+            RECORD
+          </div>
         </div>
         <div className="screen-box">
           <div className="top-bar">
             <div className="window-dots">
-              <span></span><span></span><span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
           <div className="tab-content active">
@@ -65,12 +74,14 @@ function MainPage() {
               </div>
               <div className="pill-heading">Blocking Days</div>
               <div className="days">
-                {["sun", "mon", "tue", "wed", "thu", "fri", "sat"].map(day => (
-                  <React.Fragment key={day}>
-                    <input type="checkbox" id={day} hidden />
-                    <label htmlFor={day}>{day.toUpperCase()}</label>
-                  </React.Fragment>
-                ))}
+                {["sun", "mon", "tue", "wed", "thu", "fri", "sat"].map(
+                  (day) => (
+                    <React.Fragment key={day}>
+                      <input type="checkbox" id={day} hidden />
+                      <label htmlFor={day}>{day.toUpperCase()}</label>
+                    </React.Fragment>
+                  )
+                )}
               </div>
             </div>
             <div className="right-panel">
@@ -84,9 +95,12 @@ function MainPage() {
                 />
                 <button onClick={saveTime}>Start</button>
                 <div className="progress-container">
-                  <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+                  <div
+                    className="progress-bar"
+                    style={{ width: `${progress}%` }}
+                  ></div>
                 </div>
-                <p>{String(focusMinutes).padStart(2, '0')}:00</p>
+                <p>{String(focusMinutes).padStart(2, "0")}:00</p>
               </div>
             </div>
           </div>

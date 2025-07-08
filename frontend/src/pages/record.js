@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CenterModal from "../CenterModal";
-import "./record.css";
+import "../assets/styles/record.css";
 
 function getTodayTodos() {
   // timer.js에서 localStorage에 저장된 todayTodos를 불러옴 (없으면 예시)
