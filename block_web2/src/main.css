@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>메인 페이지</title>
-  <style>
 .tabs {
   display: flex;
   justify-content: flex-start;
@@ -37,9 +31,9 @@
 
 
 .tab-content.active {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .tabs span {
   padding: 10px 20px;
@@ -62,7 +56,6 @@
     }
 
     body {
-      background-image: url('main_page2.png'); /* ✅ 정확한 이미지 경로! */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -272,98 +265,13 @@ input[type="text"]:focus, input[type="number"]:focus {
   box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
 }
 
-
-
-
-
-
-
-  </style>
-</head>
-<body>
-      <div class="tabs">
-        <div class="tab" onclick="location.href='mypage.html'">MYPAGE</div>
-        <div class="tab" onclick="location.href='main.html'">START</div>
-        <div class="tab" onclick="location.href='record.html'">RECORD</div>
-    </div>
-<div class="screen-box">
-
- <div class="top-bar"> <!-- ✅ 이 줄이 꾸며주는 박스! -->
-  <div class="window-dots">
-    <span></span><span></span><span></span>
-  </div>
-</div>
-  <!-- ✅ 실제 콘텐츠 내용 -->
-  <div class="tab-content active" id="tab1">
-    <div class="left-panel">
-    
-    <!-- ✅ Website Block Settings -->
-    <div class="pill-heading">Website Block Settings</div>
-    <div class="input-row">
-      <input type="text" id="blockUrl" placeholder="예: www.instagram.com" />
-    </div>
-
-
-
-    <!-- ✅ Blocking Days -->
-    <div class="pill-heading">Blocking Days</div>
-    <div class="days">
-      <input type="checkbox" id="sun" hidden><label for="sun">SUN</label>
-      <input type="checkbox" id="mon" hidden><label for="mon">MON</label>
-      <input type="checkbox" id="tue" hidden><label for="tue">TUE</label>
-      <input type="checkbox" id="wed" hidden><label for="wed">WED</label>
-      <input type="checkbox" id="thu" hidden><label for="thu">THU</label>
-      <input type="checkbox" id="fri" hidden><label for="fri">FRI</label>
-      <input type="checkbox" id="sat" hidden><label for="sat">SAT</label>
-    </div>
-
-    </div>
-  </div>
-
-    <div class="right-panel">
-    <div class="pill-heading">Blocking Time</div>
-    <input type="number" id="timeInput" placeholder="시간(분)">
-    <button onclick="saveTime()">Start</button>
-
-    <!-- 시각적인 막대 -->
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <p id="timeDisplay">00:00</p>
-  </div>
-</div>
-
-
-
-<script>
-function saveTime() {
-  const minutes = document.getElementById('timeInput').value;
-  if (!minutes || isNaN(minutes)) {
-    alert("유효한 시간을 입력해주세요!");
-    return;
-  }
-  localStorage.setItem('focusMinutes', minutes);
-  location.href = 'timer.html';
+.blocking-time-bg {
+  background: #f3f3f3;
+  border-radius: 18px;
+  padding: 28px 24px 20px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
 }
-
-const timeInput = document.getElementById("timeInput");
-const progressBar = document.getElementById("progressBar");
-const timeDisplay = document.getElementById("timeDisplay");
-
-timeInput.addEventListener("input", () => {
-  const inputValue = parseInt(timeInput.value);
-  const maxMinutes = 60; // 최대 60분 기준
-  const clamped = Math.min(inputValue, maxMinutes);
-
-  const percent = Math.max(0, (clamped / maxMinutes) * 100);
-  progressBar.style.width = `${percent}%`;
-
-  // 시간 표시도 함께 변경
-  const min = String(clamped).padStart(2, '0');
-  timeDisplay.textContent = `${min}:00`;
-});
-</script>
-
-
-</body>
-</html>
