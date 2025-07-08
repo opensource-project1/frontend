@@ -1,0 +1,277 @@
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;   /* 상대 위치로 이동 가능하게 함 */
+  top: 164px;             /* 위에서 10px 떨어진 위치에 놓기 */
+  left: 300px;            /* 왼쪽에서 30px 떨어지게 */
+  z-index: 10;           /* 다른 요소 위에 보이게 함 */
+}
+
+.tab {
+  padding: 5px 22px;
+  font-size: 13px;
+  border: 2px solid #000000;
+  border-bottom: none;
+  border-radius: 9px 9px 0 0;
+  background: linear-gradient(to bottom #eedde8 , #ffffff, #eedde8);
+  color: #000000;  /* ✅ 글자색 흰색으로 변경 */
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.3s; /* 마우스 올렸을 때 부드럽게 바뀌도록 애니메이션 0.3초 */
+}
+/* 마우스를 올렸을 때 */
+.tab:hover {
+  background-color: #ffb0d2; /* 원하는 hover 색상으로 변경 */
+}
+
+.tab.active {
+  background-color: white;
+  border-bottom: 2px solid white;
+}
+
+
+.tab-content.active {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.tabs span {
+  padding: 10px 20px;
+  border: 1px solid #888;
+  border-bottom: none;
+  background-color: #f8f8f0;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+}
+
+.tabs span.active {
+  background-color: white;
+  font-weight: bold;
+}
+    /* ... 기존 html, body, body, screen-box는 그대로 두고 아래 추가 또는 수정 ... */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .screen-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 25.3%;
+      left: 20%;
+      width: 53%;
+      height: 53%;
+      background: linear-gradient(to bottom #201f20 , #201f20);
+      background-color:  #201f20;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3),
+      inset 0 0 15px rgba(255, 255, 255, 0.4);  /* ✅ 내부 광택 */
+      border: 2.5px solid #ff5bdb;
+
+    }
+
+    .screen-box h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #444;
+    display: inline-block;
+    }
+
+    .time-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    }
+
+    input[type="time"] {
+    flex: 1;
+    }
+
+    /* 요일 */
+    .days {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    }
+
+    .days label {
+        background: #242424;
+  color: #ffbcd8;
+  padding: 8px 12px;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-right: 10px; /* ✅ 요일 간 간격 조절 */
+  cursor: pointer;
+  border: 2px solid #ffa6e7;
+
+    }
+
+    .days input[type="checkbox"]:checked + label {
+    background: linear-gradient(to bottom #ff91b4, #ff78a3);
+        background: #ff91b4;
+    color: rgb(45, 45, 45);
+    }
+
+    /* START 버튼 */
+    button {
+    position: absolute;
+    right: 40px;
+    bottom: 25px;
+    width: auto;
+    padding: 12px 28px;
+    background: linear-gradient(to bottom, #ff82d3, #d79bff);
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: 0.3s; /* 마우스 올렸을 때 부드럽게 바뀌도록 애니메이션 0.3초 */
+    }
+
+    button:hover {
+    background: linear-gradient(to bottom, #8a47ff, #d79bff);
+    }
+
+    .input-row {
+  z-index: 1; /* 위에 표시 */
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.input-row label {
+  width: 160px;
+  font-weight: bold;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 10px 10px;
+  border: 1px solid #ff63c1;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #ffffff;
+  transition: border-color 0.2s;
+}
+
+.input-row input:focus {
+  outline: none;
+  border-color: #63cbff; /* 연보라 강조 */
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.2);
+}
+
+.left-panel {
+  flex: 0.5; /* 오른쪽 패널이랑 너비 나누기 */
+  max-width: 80%;  /* ← 최대 너비 제한 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* 위아래 섹션 간 간격 */
+}
+
+.right-panel {
+  flex: 0.9;
+  background: #ebebeb;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 0 10px #ccc;
+  
+}
+
+.progress-container {
+  width: 100%;
+  height: 14px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #6c63ff;
+  transition: width 1s linear;
+}
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 99.83%;
+  height: 30px; /* 얇은 막대 느낌 */
+  background: linear-gradient(to bottom, #ff82d3, #d79bff);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 2px solid #ff5bdb;
+}
+
+.window-dots {
+  position: absolute;
+  right: 14px;        /* 오른쪽 끝에서 살짝 떨어짐 */
+  top: 8px;           /* 위에서 약간 아래 */
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots span {
+  width: 7px;
+  height: 7px;
+  background-color: #211f21;;  /* 원 색상 */
+  border-radius: 50%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); /* 작게 테두리 */
+}
+
+
+
+/* 소제목 알약 디자인 */
+.pill-heading {
+  display: inline-block;
+  background-color: #ff9bd7;      /* 부드러운 핑크 */
+background: linear-gradient(to bottom, #ff82d3, #d79bff);
+  color: #333;                    /* 글자 색 */
+  padding: 8px 13px;             /* 알약 형태 패딩 */
+  border-radius: 50px;            /* 완전 둥글게 */
+  font-weight: bold;
+  font-size: 13px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 살짝 입체감 */
+  margin-bottom: 15px;            /* 아래 요소와 간격 */
+  max-width: 180px;         /* ✅ 최대 가로폭 제한 */
+  white-space: nowrap;      /* ✅ 줄바꿈 방지 */
+}
+
+input[type="text"], input[type="number"] {
+  padding: 10px 15px;
+  border: 2px solid #ff63b9;;
+  border-radius: 40px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.281);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  border-color: #6159ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+.blocking-time-bg {
+  background: #f3f3f3;
+  border-radius: 18px;
+  padding: 18px 14px 12px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+}
